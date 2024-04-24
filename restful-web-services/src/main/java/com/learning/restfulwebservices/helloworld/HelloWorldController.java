@@ -11,4 +11,9 @@ public class HelloWorldController {
         return "HELLO PEOPLE";
     }
 
+    @GetMapping("/hellojson")
+    public HelloWorldBean HelloWorldBean(){
+        return new HelloWorldBean("Hello PEOPLE");
+    }
+
 }
