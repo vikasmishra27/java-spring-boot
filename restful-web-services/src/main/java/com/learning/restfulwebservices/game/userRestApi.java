@@ -1,12 +1,15 @@
 package com.learning.restfulwebservices.game;
 
+import java.net.URI;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class userRestApi {
@@ -27,8 +30,13 @@ public class userRestApi {
         return service.findbyid(id);
     }
     @PostMapping("/createUser")
-    public void newUser(@RequestBody user user){
-        service.createUser(user);    
+    public ResponseEntity<user> newUser(@RequestBody user user){
+        user savedUser = service.createUser(user); 
+        URI location = ServletUriComponentsBuilder
+                        .fromCurrentContextPath()
+                        .path("/getbyid/{id}")
+                        .buildAndExpand(savedUser.getId()).toUri(); 
+        return ResponseEntity.created(location).build();   //return 201 code for new creation
     }
 
 }

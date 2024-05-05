@@ -25,8 +25,9 @@ public class userFunctions {
         return users.stream().filter(x -> x.getId().equals(id)).findFirst().get();
     }
 
-    public void createUser(user user){
+    public user createUser(user user){
         users.add(user);
+        return user;
     }
 
 }
