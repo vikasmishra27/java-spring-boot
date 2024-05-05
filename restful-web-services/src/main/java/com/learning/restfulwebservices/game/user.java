@@ -2,12 +2,12 @@ package com.learning.restfulwebservices.game;
 
 import java.time.LocalDate;
 
-public class social {
+public class user {
     private Integer id;
     private String name;
     private LocalDate birthDate;
     
-    public social(Integer id, String name, LocalDate birthDate) {
+    public user(Integer id, String name, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
