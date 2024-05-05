@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,5 +28,9 @@ public class socialController {
     @GetMapping("/getbyid/{id}")
     public social getbyid(@PathVariable Integer id){
         return users.stream().filter(x -> x.getId().equals(id)).findFirst().get();
+    }
+    @PostMapping("/createUser")
+    public void createUser(@RequestBody social user){
+        users.add(user);
     }
 }
