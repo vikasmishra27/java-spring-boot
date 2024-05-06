@@ -31,4 +31,8 @@ public class userFunctions {
         return user;
     }
 
+    public void deleteByid(int id) {
+        users.removeIf(x->x.getId().equals(id));
+    }
+
 }

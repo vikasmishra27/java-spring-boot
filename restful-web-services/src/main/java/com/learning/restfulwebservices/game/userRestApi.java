@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,12 @@ public class userRestApi {
             throw new UserNotFoundException("id:" + id);
         return u1;
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void removeByid(@PathVariable int id){
+        service.deleteByid(id);
+    }
+
     @PostMapping("/createUser")
     public ResponseEntity<user> newUser(@RequestBody user user){
         user savedUser = service.createUser(user); 
