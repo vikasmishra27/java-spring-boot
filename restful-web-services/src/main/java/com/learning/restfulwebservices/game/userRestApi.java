@@ -27,7 +27,10 @@ public class userRestApi {
 
     @GetMapping("/getbyid/{id}")
     public user getbyid(@PathVariable Integer id){
-        return service.findbyid(id);
+        user u1 = service.findbyid(id);
+        if ( u1 == null)
+            throw new UserNotFoundException("id:" + id);
+        return u1;
     }
     @PostMapping("/createUser")
     public ResponseEntity<user> newUser(@RequestBody user user){

@@ -22,7 +22,8 @@ public class userFunctions {
     }
 
     public user findbyid(Integer id){
-        return users.stream().filter(x -> x.getId().equals(id)).findFirst().get();
+        //return users.stream().filter(x -> x.getId().equals(id)).findFirst().get();
+        return users.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }
 
     public user createUser(user user){
