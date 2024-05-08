@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class userRestApi {
 
@@ -40,7 +42,7 @@ public class userRestApi {
     }
 
     @PostMapping("/createUser")
-    public ResponseEntity<user> newUser(@RequestBody user user){
+    public ResponseEntity<user> newUser(@Valid @RequestBody user user){
         user savedUser = service.createUser(user); 
         URI location = ServletUriComponentsBuilder
                         .fromCurrentContextPath()
